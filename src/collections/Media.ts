@@ -9,7 +9,27 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      required: true,
+     
+    },
+    {
+      name: 'name',
+      type: 'text',
+
+    },
+        {
+      name: 'type',
+      type: 'text',
+
+    },
+    {
+         name: 'status',
+      type: 'text',
+
+    },
+        {
+         name: 'gcsKey',
+      type: 'text',
+
     },
   ],
   upload: true,
