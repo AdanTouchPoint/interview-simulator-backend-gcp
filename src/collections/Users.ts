@@ -11,7 +11,7 @@ const Users: CollectionConfig = {
     // Only admins can create convertions
     create: isAdmin,
     // Admins can read all, but any other logged in user can only read themselves
-    read: isAdminOrSelfUser,
+    read: () => true,
     // Admins can update all, but any other logged in user can only update themselves
     update: isAdmin,
     // Admins can update all, but any other logged in user can only update themselves
