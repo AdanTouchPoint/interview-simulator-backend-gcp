@@ -24,7 +24,7 @@ router.post("/create-session", async (req, res) => {
     }
 });
 
-router.put("/updateSession", async (req, res) => {
+router.put("/update-session", async (req, res) => {
     try {
       const body = req.body;
      console.log(body, "update Start")
