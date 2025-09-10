@@ -10,7 +10,7 @@ export async function createSession(query) {
 }
 
 export async function updateSession(query) {
-  const id  = query.sessionId 
+  const id  = query.id 
  const data = await payload.update({
     collection: 'sessions', 
     data: query,
