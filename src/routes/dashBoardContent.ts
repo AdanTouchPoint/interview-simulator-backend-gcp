@@ -32,7 +32,7 @@ router.put("/update-session", async (req, res) => {
       res.json({
         success: true,
         message: "campaign update done",
-        
+        data 
       });
     } catch (error) {
       res.status(400);
