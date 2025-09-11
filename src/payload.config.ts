@@ -7,6 +7,7 @@ import { webpackBundler } from '@payloadcms/bundler-webpack'
 import Users from './collections/Users';
 import Sessions from './collections/Sessions';
 import { Media } from './collections/Media';
+import {Videos} from './collections/Videos';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:8080',
@@ -18,7 +19,8 @@ export default buildConfig({
   collections: [
     Users,
     Sessions,
-    Media
+    Media,
+    Videos
   ],
   editor: slateEditor({}),
   db: mongooseAdapter({

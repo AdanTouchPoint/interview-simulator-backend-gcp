@@ -23,19 +23,20 @@ const completeUploadSchema = z.object({
 
 router.post('/start', async (req: Request, res: Response) => {
   try {
+    console.log('Request body:', req.body); 
     const { fileName, fileType } = startUploadSchema.parse(req.body);
     const sanitizedFileName = sanitize(fileName);
     const uniqueKey = `videos/${uuidv4()}-${sanitizedFileName}`;
     
     const query = {
-      user: req.body.id,
+      //user: req.body.id,
       name: sanitizedFileName,
       type: fileType, 
       gcKey: uniqueKey, 
       status: 'UPLOADING'
     }
     const video = await createMedia(query);
- 
+ console.log('Created media record:', video);
     const file = bucket.file(uniqueKey);
     const options = {
       version: 'v4' as const,
