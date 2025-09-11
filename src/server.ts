@@ -2,7 +2,7 @@ import express from 'express';
 import payload from 'payload';
 import cors from 'cors';
 import dashBoardContent from './routes/dashBoardContent';
-
+import dashBoardServices from './routes/dashBoardServices';
 require('dotenv').config();
 const app = express();
 app.use(express.json())
@@ -24,6 +24,7 @@ const start = async () :Promise<void> => {
   })
 
   app.use('/dashBoardContent', dashBoardContent);
+  app.use('/dashBoardServices', dashBoardServices);
 
   app.listen( port, async () => {
     payload.logger.info(`Server listening on port: ${port}`)
