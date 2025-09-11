@@ -11,7 +11,7 @@ const storage = new Storage({
   projectId: process.env.GCP_PROJECT_ID,
 });
 
-const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
+const bucket = storage.bucket(process.env.GCS_BUCKET_NAME || 'interview-sim-uploads-raw');
 
 const startUploadSchema = z.object({
   fileName: z.string().min(1, 'El nombre de archivo es requerido.'),
@@ -28,7 +28,7 @@ router.post('/start', async (req: Request, res: Response) => {
     const uniqueKey = `videos/${uuidv4()}-${sanitizedFileName}`;
     
     const query = {
-      user: req.user.id,
+      user: req.body.id,
       name: sanitizedFileName,
       type: fileType, 
       gcKey: uniqueKey, 
