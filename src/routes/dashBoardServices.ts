@@ -28,7 +28,7 @@ router.post('/start', async (req: Request, res: Response) => {
     const sanitizedFileName = sanitize(fileName);
     const uniqueKey = `videos/${uuidv4()}-${sanitizedFileName}`;
     
-    const query = {
+const query = {
       //user: req.body.id,
       name: sanitizedFileName,
       type: fileType, 
@@ -36,7 +36,7 @@ router.post('/start', async (req: Request, res: Response) => {
       status: 'UPLOADING'
     }
     const video = await createMedia(query);
- console.log('Created media record:', video);
+   console.log('Created media record:', video);
     const file = bucket.file(uniqueKey);
     const options = {
       version: 'v4' as const,

@@ -31,5 +31,4 @@ export const Videos: CollectionConfig = {
 
     },
   ],
-  upload: true,
 }
