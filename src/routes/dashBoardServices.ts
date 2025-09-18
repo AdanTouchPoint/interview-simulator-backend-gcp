@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import sanitize from 'sanitize-filename';
 import { createMedia, findMediaById, updateMedia } from "../controllers/media";
+import { error } from "console";
 
 const router = Router();
 
@@ -50,9 +51,23 @@ const query = {
     };
 
     const [signedUrl] = await file.getSignedUrl(options);
-
+    if(!signedUrl) {
+      console.error('Not generated signed URL:', error);
+    }
+    const payload = await fetch(signedUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': fileType,
+        'x-goog-resumable': 'start',
+      },
+    });
+    console.log('Signed URL payload:', payload);
+    if(!payload.ok) {
+      console.error('Failed to initiate resumable upload:', await payload.text());
+      return res.status(500).json({ message: 'Error al iniciar la subida a GCS.' });
+    }
     res.status(200).json({
-      sessionUri: signedUrl,
+      sessionUri: payload.headers.get('Location'),
       videoId: video.id
     });
 
