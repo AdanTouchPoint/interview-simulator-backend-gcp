@@ -52,7 +52,7 @@ const query = {
     const [signedUrl] = await file.getSignedUrl(options);
 
     res.status(200).json({
-      uploadUrl: signedUrl,
+      sessionUri: signedUrl,
       videoId: video.id
     });
 
