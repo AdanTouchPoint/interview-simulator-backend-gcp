@@ -7,7 +7,6 @@ import { createMedia, findMediaById, updateMedia } from "../controllers/media";
 import { error } from "console";
 
 const router = Router();
-
 const storage = new Storage({
   projectId: process.env.GCP_PROJECT_ID,
   credentials: {
@@ -15,9 +14,7 @@ const storage = new Storage({
     private_key: process.env.GCS_PRIVATE_KEY ? process.env.GCS_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
   },
 });
-
 const bucket = storage.bucket(process.env.GCS_BUCKET_NAME || 'interview-sim-uploads-raw');
-
 const startUploadSchema = z.object({
   fileName: z.string().min(1, 'El nombre de archivo es requerido.'),
   fileType: z.string().startsWith('video/', 'El tipo de archivo debe ser un video.'),

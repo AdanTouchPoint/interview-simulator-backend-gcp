@@ -31,6 +31,11 @@ const Users: CollectionConfig = {
     type: 'text', 
     },
     {
+    name: 'active',
+    type: "checkbox",
+    defaultValue: true
+  },
+    {
     label:{es: 'rol', en:'role'},
     name: 'roles',
   // Save this field to JWT so we can use from `req.user`
