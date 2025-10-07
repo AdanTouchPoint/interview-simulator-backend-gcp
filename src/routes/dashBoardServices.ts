@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import sanitize from 'sanitize-filename';
 import { createMedia, findMediaById, updateMedia } from "../controllers/media";
+import { getUserById } from "../controllers/users";
 import { error } from "console";
 
 const router = Router();
@@ -97,5 +98,20 @@ router.post('/complete', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error interno del servidor.' });
   }
 });
-
+router.get('/autho', async (req: Request, res: Response) => {
+  try {
+    const clientId = req.query.clientId as string;
+    const data = await getUserById(clientId);
+    if (!data || data.totalDocs === 0) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+    res.status(200).json({ user: data.docs[0] });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ message: 'Datos de entrada inválidos', errors: error });
+    }
+    console.error('Error al encontrar usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor.' });
+  }
+});
 export default router;
