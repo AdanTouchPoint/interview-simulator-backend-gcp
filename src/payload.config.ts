@@ -8,6 +8,8 @@ import Users from './collections/Users';
 import Sessions from './collections/Sessions';
 import { Media } from './collections/Media';
 import {Videos} from './collections/Videos';
+import Simulaciones from './collections/Simulaciones';
+import QuestionsBank from './collections/QuestionsBank';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:8080',
@@ -20,7 +22,9 @@ export default buildConfig({
     Users,
     Sessions,
     Media,
-    Videos
+    Videos,
+    Simulaciones,
+    QuestionsBank
   ],
   editor: slateEditor({}),
   db: mongooseAdapter({

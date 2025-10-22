@@ -41,6 +41,12 @@ const Sessions: CollectionConfig = {
                 }
 
             ]
+        },
+        {
+            // Relational field to the videos collection    
+            name: 'video',
+            type: 'relationship',
+            relationTo: 'videos',
         }
 
     ],
