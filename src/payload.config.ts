@@ -5,9 +5,6 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 // import Examples from './collections/Examples';
 import Users from './collections/Users';
-import Sessions from './collections/Sessions';
-import { Media } from './collections/Media';
-import {Videos} from './collections/Videos';
 import Simulaciones from './collections/Simulaciones';
 import QuestionsBank from './collections/QuestionsBank';
 
@@ -20,9 +17,6 @@ export default buildConfig({
   },
   collections: [
     Users,
-    Sessions,
-    Media,
-    Videos,
     Simulaciones,
     QuestionsBank
   ],

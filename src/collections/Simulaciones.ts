@@ -34,10 +34,12 @@ const Simulaciones: CollectionConfig = {
             type: 'text',
         },
         {
+            label: 'Descripcion del negocio',
             name: 'descripcion_del_negocio',
             type: 'text'
         },
         {
+            label: 'Nivel de responsabilidad',
             name: 'nivel_de_responsabilidad',
             type: 'text',
         },
@@ -55,6 +57,7 @@ const Simulaciones: CollectionConfig = {
             type: 'text',
         },
         {
+            label: 'Tiempo 2 (segundos)',
             name: 'tiempo2',
             type: 'number',
         },
@@ -63,6 +66,7 @@ const Simulaciones: CollectionConfig = {
             type: 'text',
         },
         {   
+            label: 'Tiempo 3 (segundos)',
             name: 'tiempo3',
             type: 'number',
         },
@@ -71,10 +75,12 @@ const Simulaciones: CollectionConfig = {
             type: 'text',
         },
         {
+            label: 'Tiempo Total(segundos)',
             name: 'tiempo_total',
             type: 'number',
         },
         {
+            label: 'Fecha de envio',
             name: 'fecha_de_envio',
             type: 'text',
         }
